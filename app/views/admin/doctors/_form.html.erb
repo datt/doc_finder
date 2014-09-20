@@ -10,20 +10,23 @@
     <%= f.input :email, placeholder: 'user@domain.com', required: true %>
   </div>
   <div data-hook="control-group">
-    <%= f.input :date_of_birth, as: :string, class: 'datepicker'%>
+    <%= f.input :date_of_birth, start_year: Date.today.year - 90, end_year: Date.today.year - 12, order: [:day, :month, :year]%>
   </div>
   <div data-hook="control-group">
     <%= f.input :degree, required: true %>
   </div>
   <div data-hook="control-group">
-    <%= f.input :expertise, required: true %>
+    <%= f.input :image, as: :file %>
   </div>
   <div data-hook="control-group">
-    <%= f.input :practicing,  as: :string, class: 'datepicker', required: true %>
+    <%= f.input :expertise, as: :text, required: true, :input_html => {:cols => 40, :rows => 5 } %>
+  </div>
+  <div data-hook="control-group">
+    <%= f.input :practicing, start_year: Date.today.year - 90, order: [:day, :month, :year]%>
   </div>
   <div data-hook="control-group">
     <div class="controls">
-      <%= f.submit 'Create', class: 'btn btn-large btn-primary' %>
+      <%= f.submit name, class: 'btn btn-large btn-primary' %>
     </div>
   </div>
 </div>
