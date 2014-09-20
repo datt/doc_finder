@@ -36,6 +36,15 @@ ActiveRecord::Schema.define(:version => 20140920134556) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "availbilities", :force => true do |t|
+    t.string   "day"
+    t.datetime "from"
+    t.datetime "to"
+    t.integer  "clinic_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "clinics", :force => true do |t|
     t.string   "name"
     t.string   "address1"
