@@ -371,3 +371,9 @@ input.btn{
   opacity: 0.8;
   filter: alpha(opacity = 80);
 }
+.clinic_details{
+    margin-left: 50px;
+}
+.clinic_details .span2{
+    font-weight: bold;
+}

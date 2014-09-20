@@ -6,6 +6,6 @@ class DoctorsController < ApplicationController
 
   def show
     @doctor = Doctor.find(params[:id])
-    redirect_to :back if @doctor.nil?
+    # redirect_to :back if @doctor.nil?
   end
 end

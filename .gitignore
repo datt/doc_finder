@@ -27,3 +27,4 @@ config/mongoid.yml
 *.sql
 config/database.yml
 db/schema.rb
+public/uploads/*
