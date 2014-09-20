@@ -2,7 +2,7 @@ module Admin
   class DoctorsController < Admin::BaseController
     load_and_authorize_resource
     def index
-    	@doctors = Doctor.order.page(params[:page]).per(1)
+    	@doctors = Doctor.order.page(params[:page]).per(2)
     end
 
     def create
@@ -26,6 +26,10 @@ module Admin
     def destroy
       @doctor.destroy
       redirect_to admin_doctors_path
+    end
+    def clinics
+    	@doctor = Doctor.find(params[:id])
+    	@clinics = @doctor.clinics
     end
   end
 end

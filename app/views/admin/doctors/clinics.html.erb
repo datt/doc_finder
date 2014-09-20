@@ -1,0 +1,32 @@
+<h2>Clinic List <%= link_to "Add",  new_admin_clinic_path(doc_id: @doctor.permalink), class: "btn btn-inverse pull-right" %></h2>
+<% if @clinics.any? %>
+  <table class="table table-hover table-bordered">
+    <thead>
+      <th>#</th>
+      <th><%= t(:name) %></th>
+      <th><%= t(:address1) %></th>
+      <th><%= t(:city) %></th>
+      <th><%= t(:country) %></th>
+      <th></th>
+    </thead>
+    <tbody>
+      <% @clinics.each_with_index do |clinic, index| %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= link_to clinic.name, admin_doctor_path(clinic) %></td>
+          <td><%= clinic.address1 %></td>
+          <td><%= clinic.city %></td>
+          <td><%= Country[clinic.country] %></td>
+          <td><%= link_to "Edit", edit_admin_clinic_path(clinic), class: 'btn btn-primary'%>
+          &nbsp;
+          <%= link_to "Delete", admin_clinic_path(clinic), method: :delete, confirmation: { data: 'Are you sure?'}, class: 'btn btn-danger' %>
+          </td>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
+<% else %>
+<hr>
+  <!-- <h3>No Doctors <%#= link_to 'add', new_admin_doctor_path%></h3> -->
+  <h3 style="text-align:center;">Data Not Found. ;)</h3>
+<% end %>

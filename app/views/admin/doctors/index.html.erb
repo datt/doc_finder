@@ -1,4 +1,5 @@
-<h2>Doctor's List</h2>
+<h2>Doctor's List <%= link_to "Add",  new_admin_doctor_path, class: "btn btn-inverse pull-right" %></h2>
+
 <% if @doctors.any? %>
   <table class="table table-hover table-bordered">
     <thead>
@@ -8,7 +9,7 @@
       <th><%= t(:degree) %></th>
       <th><%= t(:expertise) %></th>
       <th>Exprience</th>
-      <th><%= link_to "Add",  new_admin_doctor_path, class: "btn btn-inverse" %></th>
+      <th></th>
     </thead>
     <tbody>
       <% @doctors.each_with_index do |doctor, index| %>
@@ -21,12 +22,16 @@
           <td><%= time_ago_in_words(doctor.practicing) %></td>
           <td><%= link_to "Edit", edit_admin_doctor_path(doctor), class: 'btn btn-primary'%>
           &nbsp;
-          <%= link_to "Delete", admin_doctor_path(doctor), method: :delete, confirmation: { date: 'Are you sure?'}, class: 'btn btn-danger' %></td>
+          <%= link_to "Delete", admin_doctor_path(doctor), method: :delete, confirmation: { data: 'Are you sure?'}, class: 'btn btn-danger' %>
+          <%= link_to "Clinics", clinics_admin_doctor_path(doctor), class: "btn btn-success" %>
+          </td>
         </tr>
       <%end%>
     </tbody>
   </table>
   <%= paginate @doctors %>
 <% else %>
-  <h3>No Doctors <%= link_to 'add', new_admin_doctor_path%></h3>
+<hr>
+  <!-- <h3>No Doctors <%#= link_to 'add', new_admin_doctor_path%></h3> -->
+  <h3 style="text-align:center;">Data Not Found. ;)</h3>
 <% end %>

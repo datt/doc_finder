@@ -27,6 +27,8 @@ gem "cancan"
 gem 'kaminari'
 gem 'carrierwave'
 gem "rmagick"
+gem 'countries'
+gem 'country_select'
 group :development do
 	gem 'awesome_print'
 end
