@@ -27,6 +27,8 @@ gem "cancan"
 group :development do
 	gem 'awesome_print'
 end
+gem 'haml', '4.0.3'
+gem 'haml-rails', '0.4'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
