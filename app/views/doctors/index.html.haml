@@ -21,16 +21,16 @@
               %a
               .accordianContainer
                 .inputContainer
-                  %h6 location
+                  %h6 Area
                   .selListWrap
-                    %select{class: "addressBox", title: "Select state", prompt: "Select State", tabindex: "1"})
+                    = select_tag("state_id", options_for_select(@areas.collect {|p| [ p.name.capitalize, p.id ] }),{class: "addressBox", title: "Select Area", prompt: "Select Area", tabindex: "1"})
 
                 .inputContainer
-                  %h6 Recommended For
-                  - 3.times do |user_type|
+                  %h6 Specialty
+                  - SPECIALTIES.each do |specialty|
                     .check_value
-                      %input{filter_name: "user_types", name: "genre", type: "checkbox", value: user_type, id: "user#{user_type}"}
-                      %label{for: "user#{user_type}"} Everyone
+                      %input{filter_name: "specialtys", name: "genre", type: "checkbox", value: specialty, id: "specialty#{specialty}"}
+                      %label{for: "specialty#{specialty}"} #{specialty}
 
                 .inputContainer
                   %h6 Category
