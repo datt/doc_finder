@@ -548,14 +548,14 @@
   width: 135px;
   z-index: 100;
 }
-.searchForm{
-  float: left;
-  margin: 3px 22px 2px 0;
-  width: 298px;
-}
-.searchForm input{
-  float: left;
-}
+/*.searchForm{*/
+  /*float: left;*/
+  /*margin: 3px 22px 2px 0;*/
+  /*width: 298px;*/
+/*}*/
+/*.searchForm input{*/
+  /*float: left;*/
+/*}*/
 .searchForm input[type='text']{
   width: 285px;
   font: normal 12px/18px verdana;
@@ -564,12 +564,5 @@
   height: 23px;
   margin-right: -5px;
   border: solid 1px #cccccc;
-}
-.searchForm input[type='submit']{
-  background: #6e6e6e url(../images/search_sprite.png) no-repeat center center;
-  width: 25px;
-  height: 25px;
-  border: none;
-  background-position: 1px -1px;
-  margin-left: -21px;
+  background: url("searchWhite.png") 280px no-repeat;
 }

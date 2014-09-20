@@ -438,3 +438,40 @@ header .logo {
     text-align: center;
     font-weight: bold;
 }
+
+select {
+    width: 150px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+.searchBox {
+    float: left;
+    margin: 5px 0;
+}
+
+.searchForm .searchHeaderBox {
+    background: url("searchWhite.png") 5px no-repeat;
+    float: left;
+    height: 24px;
+    width: 24px;
+    background-color: #606060;
+    border: 2px solid #606060;
+    width: 30px;
+    margin-top: 8px;
+}
+
+.searchHeader {
+    float: left;
+    text-align: left;
+    padding-left: 10px;
+    color: #dddddd;
+    border: 2px solid #cccccc;
+    border-right: none;
+    height: 28px;
+    width: 274px;
+}
+
+.searchForm input[type='submit']{
+   display: none;
+}
