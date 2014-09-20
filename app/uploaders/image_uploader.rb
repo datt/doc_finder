@@ -30,7 +30,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   # def scale(width, height)
   #   # do something
   # end
-
+  def default_url
+    "/assets/missing_user_image.png"
+  end
   # Create different versions of your uploaded files:
   version :thumb do
     process :resize_to_fit => [100, 100]

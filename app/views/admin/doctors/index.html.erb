@@ -18,7 +18,7 @@
           <td><%= mail_to doctor.email%></td>
           <td><%= doctor.degree %></td>
           <td><%= doctor.expertise %></td>
-          <td><%= time_ago_in_words(doctor.practicing) %></td>
+          <td><%= time_ago_in_words(doctor.practicing) rescue nil%></td>
           <td><%= link_to "Edit", edit_admin_doctor_path(doctor), class: 'btn btn-primary'%>
           &nbsp;
           <%= link_to "Delete", admin_doctor_path(doctor), method: :delete, confirmation: { date: 'Are you sure?'}, class: 'btn btn-danger' %></td>

@@ -1,0 +1,19 @@
+= javascript_include_tag '/jquery.bxslider/jquery.bxslider.min.js'
+= stylesheet_link_tag '/jquery.bxslider/jquery.bxslider.css'
+.content
+  .basicInfo
+    %h3
+      = @doctor.name
+    = image_tag @doctor.image.url
+  .clinics
+    %h3
+      Clinincs
+    %ul.bxslider
+      -@doctor.clinics.each do |clinic|
+        %li
+          = clinic.name
+
+:javascript
+  $(document).ready(function(){
+    $('.bxslider').bxSlider();
+  });
