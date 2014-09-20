@@ -25,3 +25,4 @@ config/mongoid.yml
 /.idea/workspace.xml
 *.dump
 *.sql
+config/database.yml

@@ -15,7 +15,7 @@ development:
   database: doc_finder_development
   pool: 5
   username: root
-  password:
+  password: webonise6186
   socket: <%= ["/tmp/mysqld.sock" ,
                  "/tmp/mysql.sock" ,
                  "/var/run/mysqld/mysqld.sock" ,
@@ -32,7 +32,7 @@ staging:
   database: doc_finder_development
   pool: 5
   username: root
-  password:
+  password: webonise6186
   socket: <%= ["/tmp/mysqld.sock" ,
                  "/tmp/mysql.sock" ,
                  "/var/run/mysqld/mysqld.sock" ,
@@ -48,7 +48,7 @@ test:
   database: doc_finder_development
   pool: 5
   username: root
-  password:
+  password: webonise6186
   socket: <%= ["/tmp/mysqld.sock" ,
                  "/tmp/mysql.sock" ,
                  "/var/run/mysqld/mysqld.sock" ,
@@ -63,7 +63,7 @@ production:
   database: doc_finder_development
   pool: 5
   username: root
-  password:
+  password: webonise6186
   socket: <%= ["/tmp/mysqld.sock" ,
                  "/tmp/mysql.sock" ,
                  "/var/run/mysqld/mysqld.sock" ,

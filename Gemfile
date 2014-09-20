@@ -23,7 +23,7 @@ end
 gem 'jquery-rails'
 gem 'devise'
 gem 'simple_form'
-
+gem "cancan"
 group :development do
 	gem 'awesome_print'
 end
