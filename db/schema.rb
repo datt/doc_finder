@@ -13,15 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20140920110544) do
 
-  create_table "availbilities", :force => true do |t|
-    t.string   "day"
-    t.datetime "from"
-    t.datetime "to"
-    t.integer  "clinic_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "appointments", :force => true do |t|
     t.integer  "patient_id"
     t.string   "name"
@@ -35,6 +26,15 @@ ActiveRecord::Schema.define(:version => 20140920110544) do
 
   add_index "appointments", ["clinic_id"], :name => "index_appointments_on_clinic_id"
   add_index "appointments", ["patient_id"], :name => "index_appointments_on_patient_id"
+
+  create_table "availbilities", :force => true do |t|
+    t.string   "day"
+    t.datetime "from"
+    t.datetime "to"
+    t.integer  "clinic_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "clinics", :force => true do |t|
     t.string   "name"

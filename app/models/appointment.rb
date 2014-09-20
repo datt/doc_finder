@@ -1,7 +1,7 @@
 class Appointment < ActiveRecord::Base
-  attr_accessible :patient_id, :day, :time, :clinic_id
+  attr_accessible :patient_id, :clinic_id, :start_at, :end_at, :name
 
-  validates :day, :time, presence: true
+  validates  :start_at, :end_at, presence: true
   belongs_to :patient
   belongs_to :clinic
 
