@@ -5,7 +5,7 @@ class FakeData
       doctor.save
       doctor.add_user
       limit = (Random.rand(5)+1)
-      area = Area.limit(limit)
+      area = Area.order("RAND(id)").limit(limit)
       limit.times do |j|
         clinic = doctor.clinics.create(:name => Faker::Name.name,
           address1: area[j].name,
