@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140920064446) do
+ActiveRecord::Schema.define(:version => 20140920074816) do
 
   create_table "doctors", :force => true do |t|
     t.string   "name"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20140920064446) do
     t.string   "email"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.string   "permalink"
   end
 
   add_index "doctors", ["email"], :name => "index_doctors_on_email", :unique => true
