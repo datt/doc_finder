@@ -30,7 +30,7 @@
                   %ul.filtersList
                     - SPECIALTIES.each do |specialty|
                       %li
-                        %input{filter_name: "specialties", name: "specialties", type: "checkbox", value: specialty, id: "specialty#{specialty}"}
+                        %input{filter_name: "specialties[]", name: "specialties", type: "checkbox", value: specialty.downcase, id: "specialty#{specialty}"}
                         %label{for: "specialty#{specialty}"} #{specialty}
 
                 .inputContainer
@@ -38,7 +38,7 @@
                   %ul.filtersList.noScroll
                     - TIMINGS.each do |time|
                       %li
-                        %input{filter_name: "timings", name: "time", type: "checkbox", value: time, id: "time#{time}"}
+                        %input{filter_name: "timings[]", name: "time", type: "checkbox", value: time, id: "time#{time}"}
                         %label{for: "time#{time}"} #{time}
 
                 .inputContainer
