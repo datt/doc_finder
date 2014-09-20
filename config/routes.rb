@@ -1,5 +1,8 @@
 DocFinder::Application.routes.draw do
   root :to => 'home#index'
+  match 'auth/:provider/callback', to: 'sessions#create'
+  match 'auth/failure', to: redirect('/')
+
   devise_for :users
   namespace :admin do
     resources :doctors
@@ -11,4 +14,5 @@ DocFinder::Application.routes.draw do
       resources :appointments
     end
   end
+  resources :patients
 end

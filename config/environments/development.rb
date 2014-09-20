@@ -35,4 +35,6 @@ DocFinder::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  FACEBOOK_APP_ID = '455274101188277'
+  FACEBOOK_SECRET = '98c532a64ed66cdb575556eaa27d9f25'
 end

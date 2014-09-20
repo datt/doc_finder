@@ -14,6 +14,7 @@ class AppointmentsController < ApplicationController
     @appointment = @clinic.appointments.create(params[:appointment])
     render :json => @appointment.to_json
   end
+
   protected
     def load_clinic
       @clinic = Clinic.find(params[:clinic_id])
