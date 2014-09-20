@@ -1,7 +1,8 @@
 class Doctor < ActiveRecord::Base
-  attr_accessible :name, :permalink, :email, :date_of_birth
+  attr_accessible :name, :permalink, :email, :date_of_birth, :degree, :expertise, :phone_no, :practicing, :fees
   before_update :make_permalink
   before_create :make_permalink
+  has_many :clinics
 
   def to_param
     permalink? ? permalink : name.parameterize
