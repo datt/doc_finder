@@ -2,7 +2,7 @@ module Admin
   class DoctorsController < Admin::BaseController
     load_and_authorize_resource
     def index
-    	@doctors = Doctor.order.page(params[:page]).per(2)
+    	@doctors = Doctor.order.page(params[:page]).per(10)
     end
 
     def create

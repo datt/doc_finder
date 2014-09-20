@@ -15,8 +15,8 @@ DocFinder::Application.routes.draw do
   match '/admin', :to => 'admin/doctors#index', :as => :admin
 
   resources :doctors do
-    member do
-      post :search
+    collection do
+      get :search
     end
     resources :clinics do
       resources :appointments

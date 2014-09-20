@@ -2,9 +2,15 @@ require 'cancan'
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :authenticate_user!
-  # raise CanCan::AccessDenied do |exception|
-  #   redirect_to root_url, :alert => "You are not authorise to access this page"
-  # end
+
+  rescue_from CanCan::AccessDenied do |exception|
+    if current_user
+      redirect_to root_path, :alert => "You are not authorise to access this page"
+    else
+      redirect_to new_user_session_path, :alert => "You are not authorise to access this page"
+    end
+  end
+
   private
     def current_user
       if session[:user_id]

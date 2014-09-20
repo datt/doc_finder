@@ -32,6 +32,17 @@ class Doctor < ActiveRecord::Base
     update_attributes!(user_id: user.try(:id))
   end
 
+  def self.like_any(fields, values)
+    where fields.map { |field|
+      values.map { |value|
+        arel_table[field].matches("%#{value}%")
+      }.inject(:or)
+    }.inject(:or)
+  end
+
+  def self.search(query)
+    joins(:clinics).where("doctors.name like ? or doctors.degree like ? or doctors.expertise like ? or doctors.practicing like ? or doctors.fees like ? or doctors.meta_keyword like ? or doctors.experience like ? or doctors.visiting_fee like ? or clinics.name like ? or clinics.address1 like ? or clinics.city like ? or clinics.state like ? or clinics.country like ? or clinics.zipcode like ? ", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%")
+  end
   protected
     def make_permalink
       doctor = Doctor.where(permalink: permalink)
