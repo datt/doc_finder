@@ -377,3 +377,20 @@ input.btn{
 .clinic_details .span2{
     font-weight: bold;
 }
+.basicInfo,.communityRating, .userRating{
+    float: left;
+}
+.detailsInfo, .rating{
+    float: left;
+    margin: 50px;
+}
+.detailsInfo .expertise{
+    margin: 20px 0;
+}
+.communityRating, .userRating{
+   width: 200px;
+}
+span.basis{
+    width: 76px;
+    display: inline-block;
+}

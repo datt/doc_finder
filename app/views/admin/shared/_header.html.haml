@@ -2,3 +2,4 @@
   .navbar.navbar-inverse.navbar-static-top
     .navbar-inner.navigationOuter
       .container
+        = link_to 'logout', destroy_user_session_path, :method => :delete,:class => "btn btn-primary login", id: 'sign_out'

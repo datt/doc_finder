@@ -5,6 +5,116 @@
     %h3
       = @doctor.name
     = image_tag @doctor.image_url(:thumb).to_s
+  .detailsInfo
+    %div
+      = @doctor.degree
+    %div
+      Practing since
+      = @doctor.practicing.strftime("%Y")
+    .expertise
+      %strong
+        Expertise:
+      %div
+        = @doctor.expertise
+    %div
+      %strong
+        First visiting fees:
+      = @doctor.fees
+  .rating
+    Overall rating &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    %span.starImage
+      = image_tag "/assets/completestar.png"
+      = image_tag "/assets/completestar.png"
+      = image_tag "/assets/completestar.png"
+      = image_tag "/assets/completestar.png"
+      = image_tag "/assets/completestar.png"
+    %span 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      5/5
+    %span
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      (based on 50 votes)
+    .ratingDetails
+      .communityRating
+        %h4
+          community ratings
+        %span.basis
+          hygiene 
+        %span
+          = image_tag "/assets/completestar.png"
+          = image_tag "/assets/completestar.png"
+          = image_tag "/assets/completestar.png"
+          = image_tag "/assets/completestar.png"
+          = image_tag "/assets/completestar.png"
+          &nbsp;&nbsp;&nbsp;5/5
+        %span.basis
+          punctuality
+        %span
+          = image_tag "/assets/completestar.png"
+          = image_tag "/assets/completestar.png"
+          = image_tag "/assets/completestar.png"
+          = image_tag "/assets/completestar.png"
+          = image_tag "/assets/completestar.png"
+          &nbsp;&nbsp;&nbsp;5/5
+        %span.basis
+          compassion
+        %span
+          = image_tag "/assets/completestar.png"
+          = image_tag "/assets/completestar.png"
+          = image_tag "/assets/completestar.png"
+          = image_tag "/assets/completestar.png"
+          = image_tag "/assets/completestar.png"
+          &nbsp;&nbsp;&nbsp;5/5
+        %span.basis
+          money
+        %span
+          = image_tag "/assets/completestar.png"
+          = image_tag "/assets/completestar.png"
+          = image_tag "/assets/completestar.png"
+          = image_tag "/assets/completestar.png"
+          = image_tag "/assets/completestar.png"
+          &nbsp;&nbsp;&nbsp;5/5
+      .userRating
+        %h4
+          your ratings
+        %span.basis
+          hygiene
+        %span
+          = image_tag "/assets/outlinestar.png"
+          = image_tag "/assets/outlinestar.png"
+          = image_tag "/assets/outlinestar.png"
+          = image_tag "/assets/outlinestar.png"
+          = image_tag "/assets/outlinestar.png"
+          &nbsp;&nbsp;&nbsp;5/5
+        %span.basis
+          punctuality
+        %span
+          = image_tag "/assets/outlinestar.png"
+          = image_tag "/assets/outlinestar.png"
+          = image_tag "/assets/outlinestar.png"
+          = image_tag "/assets/outlinestar.png"
+          = image_tag "/assets/outlinestar.png"
+          &nbsp;&nbsp;&nbsp;5/5
+        %span.basis
+          compassion
+        %span
+          = image_tag "/assets/outlinestar.png"
+          = image_tag "/assets/outlinestar.png"
+          = image_tag "/assets/outlinestar.png"
+          = image_tag "/assets/outlinestar.png"
+          = image_tag "/assets/outlinestar.png"
+          &nbsp;&nbsp;&nbsp;5/5
+        %span.basis
+          money
+        %span
+          = image_tag "/assets/outlinestar.png"
+          = image_tag "/assets/outlinestar.png"
+          = image_tag "/assets/outlinestar.png"
+          = image_tag "/assets/outlinestar.png"
+          = image_tag "/assets/outlinestar.png"
+          &nbsp;&nbsp;&nbsp;5/5
+        
+  .clearfix
   .clinics
     %h3
       Clinics:
