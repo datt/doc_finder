@@ -1,0 +1,18 @@
+<div class="control" data-hook="admin_doctor_form_left">
+  <div data-hook="control-group">
+    <%= f.input :name, required: true %>
+  </div>
+
+  <div data-hook="control-group">
+    <%= f.input :permalink, required: true %>
+  </div>
+  <div data-hook="control-group">
+    <%= f.input :email, placeholder: 'user@domain.com', required: true %>
+  </div>
+  <div data-hook="control-group">
+    <%= f.input :date_of_birth, as: :string, class: 'datepicker'%>
+  </div>
+  <div data-hook="control-group">
+    <%= f.submit %>
+  </div>
+</div>

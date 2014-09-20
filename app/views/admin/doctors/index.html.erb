@@ -1,1 +1,24 @@
-Hello doctor
+<% if @doctors.any? %>
+  <table class="table table-hover table-bordered">
+    <thead>
+      <th>#</th>
+      <th><%= t(:name) %></th>
+      <th><%= t(:email) %></th>
+      <th></th>
+    </thead>
+    <tbody>
+      <% @doctors.each_with_index do |doctor, index| %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= link_to doctor.name, admin_doctor_path(doctor) %></td>
+          <td><%= mail_to doctor.email%></td>
+          <td><%= link_to "<i class='icon-edit icon-white'></i>".html_safe, edit_admin_doctor_path(doctor), class: 'btn btn-primary'%>
+          &nbsp;
+          <%= link_to "<i class='icon-trash icon-white'>".html_safe, admin_doctor_path(doctor), method: :delete, confirmation: { date: 'Are you sure?'}, class: 'btn btn-primary' %></td>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
+<% else %>
+  <h3>No Doctors <%= link_to 'add', new_admin_doctor_path%></h3>
+<% end %>
