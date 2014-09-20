@@ -27,45 +27,57 @@
 
                 .inputContainer
                   %h6 Recommended For
-                  %label.all{for: "check-1"} Everyone
-                  %input.all#check-1{name: "genre", type: "checkbox", value: "All", checked: true, filter_name: "user_types"}/
                   - 3.times do |user_type|
-                    %label{for: "user#{user_type}"}
-                    %input{filter_name: "user_types", name: "genre", type: "checkbox", value: user_type, id: "user#{user_type}"}
+                    .check_value
+                      %input{filter_name: "user_types", name: "genre", type: "checkbox", value: user_type, id: "user#{user_type}"}
+                      %label{for: "user#{user_type}"} Everyone
 
                 .inputContainer
                   %h6 Category
                   %label.all{for: "check-2"} All
                   - 3.times do |c|
-                    %input{filter_name: "course_type", type: "checkbox", value: c,checked: (false), id: "cat#{c}"}/
-                    %label{for: "cat#{c}"}
+                    .check_value
+                      %input{filter_name: "course_type", type: "checkbox", value: c,checked: (false), id: "cat#{c}"}/
+                      %label{for: "cat#{c}"}
 
                 .inputContainer
-                  %input#check-3{checked: true, filter_name: "is_paid", type: "checkbox", value: "0", filter_type: "int"}/
-                  %label{for: "check-3"} Free
-                  %input#check-4{checked: true, filter_name: "is_paid", type: "checkbox", value: "1", filter_type: "int"}/
-                  %label{for: "check-4"} Paid
+                  .check_value
+                    %input#check-3{checked: true, filter_name: "is_paid", type: "checkbox", value: "0", filter_type: "int"}/
+                    %label{for: "check-3"} Free
+                    %input#check-4{checked: true, filter_name: "is_paid", type: "checkbox", value: "1", filter_type: "int"}/
+                    %label{for: "check-4"} Paid
 
       .span9.courseListContainer
-        .dn#divParams{"data-courseType" => "#{params[:course_type]}", "data-userType" => "#{params[:user_type]}"}
-          / The Map gets drawn here!
+        %ul.dr-list
+          %li
+            -#%img{:src=>"images/img1.jpg"}
+            .dr-info
+              %h3
+                Dr.Sujay R Naik
+              %p
+                Ophthalmologist, Eye Surgeon, Pediatric Ophthalmologist
+                %br
+                  practicing since 2009
+              -#%img{src="images/img1.jpg"}
+              %a{:href=>"javascript:void(0);"}
+                Chinchwad
+              %a{:href=>"javascript:void(0);"}
+                Nigadi
+          %li
+            -#%img{:src=>"images/img1.jpg"}
+            .dr-info
+              %h3
+                Dr.Sujay R Naik
+              %p
+                Ophthalmologist, Eye Surgeon, Pediatric Ophthalmologist
+                %br
+                  practicing since 2009
+              -#%img{src="images/img1.jpg"}
+              %a{:href=>"javascript:void(0);"}
+                Chinchwad
+              %a{:href=>"javascript:void(0);"}
+                Nigadi
 
--#%section
-  .container
-    .row
-      .searchContainer
-        .span3.bs-docs-sidebar
-          .filters
-            Filters
-          .filterHeading Specialty
-          %ul.filterList
-            %li
-              %label{for: "#checkbox1"}
-                %input#checkbox1{type: "checkbox"} orthopedic
-            %li
-          %ul Methodology
-          %ul Timings
-          %ul Expirience
-        .span9
-          main
-        .clearfix
+
+
+

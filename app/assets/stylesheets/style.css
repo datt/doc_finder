@@ -287,3 +287,26 @@ select {
 .searchForm input[type='submit']{
    display: none;
 }
+
+.mobileAccordian input[type='checkbox']{
+    float: left !important;
+    margin-right: 4px !important;
+}
+ul.dr-list{
+    width: 100%;
+    border-radius: 5px;
+}
+ul.dr-list li{
+    clear:both;
+    padding: 5px;
+    margin-bottom: 10px;
+    background: #f8f8f8;
+}
+ul.dr-list img{
+    float: left;
+}
+ul.dr-list .info{
+    float:left;
+}
+
+
