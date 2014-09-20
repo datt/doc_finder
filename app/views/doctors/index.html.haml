@@ -23,48 +23,38 @@
                 .inputContainer
                   %h6 Area
                   .selListWrap
-                    = select_tag("state_id", options_for_select(@areas.collect {|p| [ p.name.capitalize, p.id ] }),{class: "addressBox", title: "Select Area", prompt: "Select Area", tabindex: "1"})
+                    = select_tag("area_code", options_for_select(@areas.collect {|p| [ p.name.capitalize, p.id ] }),{class: "addressBox", title: "Select Area", prompt: "Select Area", tabindex: "1"})
 
                 .inputContainer
                   %h6 Specialty
-                  - SPECIALTIES.each do |specialty|
-                    .check_value
-                      %input{filter_name: "specialtys", name: "genre", type: "checkbox", value: specialty, id: "specialty#{specialty}"}
-                      %label{for: "specialty#{specialty}"} #{specialty}
+                  %ul.filtersList
+                    - SPECIALTIES.each do |specialty|
+                      %li
+                        %input{filter_name: "specialties", name: "specialties", type: "checkbox", value: specialty, id: "specialty#{specialty}"}
+                        %label{for: "specialty#{specialty}"} #{specialty}
 
                 .inputContainer
-                  %h6 Category
-                  %label.all{for: "check-2"} All
-                  - 3.times do |c|
-                    .check_value
-                      %input{filter_name: "course_type", type: "checkbox", value: c,checked: (false), id: "cat#{c}"}/
-                      %label{for: "cat#{c}"}
+                  %h6 Timings
+                  %ul.filtersList.noScroll
+                    - TIMINGS.each do |time|
+                      %li
+                        %input{filter_name: "timings", name: "time", type: "checkbox", value: time, id: "time#{time}"}
+                        %label{for: "time#{time}"} #{time}
 
                 .inputContainer
-                  .check_value
-                    %input#check-3{checked: true, filter_name: "is_paid", type: "checkbox", value: "0", filter_type: "int"}/
-                    %label{for: "check-3"} Free
-                    %input#check-4{checked: true, filter_name: "is_paid", type: "checkbox", value: "1", filter_type: "int"}/
-                    %label{for: "check-4"} Paid
+                  %h6 Charges
+                  %label#amount
+                  #chargesSlider
+
+                .inputContainer
+                  %h6 Expirience
+                  %label#years
+                  #expirienceSlider
 
       .span9.courseListContainer
-        %ul.dr-list
+        %ul.doctorsList
           %li
-            -#%img{:src=>"images/img1.jpg"}
-            .dr-info
-              %h3
-                Dr.Sujay R Naik
-              %p
-                Ophthalmologist, Eye Surgeon, Pediatric Ophthalmologist
-                %br
-                  practicing since 2009
-              -#%img{src="images/img1.jpg"}
-              %a{:href=>"javascript:void(0);"}
-                Chinchwad
-              %a{:href=>"javascript:void(0);"}
-                Nigadi
-          %li
-            -#%img{:src=>"images/img1.jpg"}
+            %img{:src=>"images/img1.jpg"}
             .dr-info
               %h3
                 Dr.Sujay R Naik
