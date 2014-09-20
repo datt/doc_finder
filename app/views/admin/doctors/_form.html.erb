@@ -1,0 +1,21 @@
+<div data-hook="admin_doctor_form_fields">
+
+  <div class="left eight columns alpha" data-hook="admin_doctor_form_left">
+    <div data-hook="admin_doctor_form_name">
+      <%= f.input :name, required: true %>
+    </div>
+
+    <div data-hook="admin_doctor_form_permalink">
+      <%= f.input :permalink, required: true %>
+    </div>
+    <div data-hook="admin_doctor_form_email">
+      <%= f.input :email, placeholder: 'user@domain.com', required: true %>
+    </div>
+    <div data-hook="admin_doctor_form_email">
+      <%= f.input :date_of_birth, as: :string, class: 'datepicker'%>
+    </div>
+    <div data-hook="admin_doctor_form_permalink">
+      <%= f.submit %>
+    </div>
+  </div>
+</div>
