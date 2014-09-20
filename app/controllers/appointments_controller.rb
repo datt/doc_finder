@@ -15,6 +15,12 @@ class AppointmentsController < ApplicationController
     render :json => @appointment.to_json
   end
 
+  def destroy
+    @appointment = Appointment.find(params[:id])
+    @id = @appointment.id
+    @appointment.destroy
+    respond_to :js
+  end
   protected
     def load_clinic
       @clinic = Clinic.find(params[:clinic_id])

@@ -2,3 +2,5 @@ SPECIALTIES = ["Anesthesiologist", "Cardiologist", "Dermatologist", "Gastroenter
 
 TIMINGS = ["9 AM to 2 PM", "4 PM to 9 PM"]
 DEGREE = ["M.B.B.S", " B.D.S", " B.Pharma", " B.Sc Nursing", " B.P.T", " B.O.T", " B.H.M.S", " B.U.M.S", " Ophthalmic Assistant Medical course", " Histopathalogical Lab Technology", " B.A.M.S", " D. Pharma", " Orthopedist", " Dental Mechanic", " Dental Hygienist", " Bachelor of Occupationaltherapy", " Radiological Assistant", " Radiography", " Medical course"]
+
+META_KEY = ['', 'back pen', 'stomach', 'khasi', 'cough', 'cold', 'fewer', 'sick', 'pregnancy', '']
