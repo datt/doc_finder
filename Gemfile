@@ -31,12 +31,14 @@ gem 'countries'
 gem 'country_select'
 group :development do
 	gem 'awesome_print'
+  gem 'faker'
 end
 gem 'haml', '4.0.3'
 gem 'haml-rails', '0.4'
 gem 'fullcalendar-rails'
 gem 'omniauth-oauth2'
 gem 'omniauth-facebook'
+gem 'rest_client'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
