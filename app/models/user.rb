@@ -9,4 +9,10 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
   has_many :user_roles
 	has_many :roles, through: :user_roles
+
+	Role.order('name').each do |role|
+		define_method("#{role.name}?") do
+			user.roles.include? role
+		end
+	end
 end

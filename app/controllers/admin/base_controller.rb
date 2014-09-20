@@ -1,6 +1,6 @@
 module Admin
-  class BaseController < ActionController::Base
-  	layout 'layouts/admin'
+  class BaseController < ApplicationController
+  	layout 'admin'
   	before_filter :authorize_admin
   	protected
         def action

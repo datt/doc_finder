@@ -15,4 +15,4 @@ Role.create!(roles)
 
 user = User.create(email: 'admin@docfinder.com', password: 'docfinder@123', password_confirmation: 'docfinder@123')
 p "email is admin@docfinder.com & password is docfinder@123"
-user.user_roles.create(role_id: Role.find_by_name('admin'))
+user.user_roles.create(role_id: Role.find_by_name('admin').try(:id))
