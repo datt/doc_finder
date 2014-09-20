@@ -1,1 +1,3 @@
 SPECIALTIES = ["Anesthesiologist", "Cardiologist", "Dermatologist", "Gastroenterologist", "Hematologist", "Physician", "Nephrologist", "Neurologist", "Neurosurgeon", "Obstetrician", "Gynecologist", "Occupational", "Medicine", "Physician", "Otolaryngologist", "Pathologist", "Pediatrician", "Podiatrist", "Psychiatrist", "Physician", "Radiation", "Onconlogist", "Diagnostic", "Radiologist", "Rheumatologist", "Urologist"]
+
+TIMINGS = ["9 AM to 2 PM", "4 PM to 9 PM"]

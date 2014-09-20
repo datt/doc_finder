@@ -12,6 +12,7 @@ $(document).ready ->
       s = @settings
       @bindUIActions()
       $("#amount").text "Rs. 75 - Rs. 300"
+      $("#years").text "2 years to 20 years"
 
     bindUIActions: ->
       $("#chargesSlider").slider
@@ -23,7 +24,20 @@ $(document).ready ->
           300
         ]
         slide: (event, ui) ->
-          $("#amount").text "Rs. " + ui.values[0] + " - Rs. " + ui.values[1]
+          $("#amount").text "Rs. #{ui.values[0]} - Rs. #{ui.values[1]}"
           return
+
+      $("#expirienceSlider").slider
+        range: true
+        min: 0
+        max: 40
+        values: [
+          2
+          20
+        ]
+        slide: (event, ui) ->
+          $("#years").text "#{ui.values[0]} years to #{ui.values[1]} years"
+          return
+
 
   Doctor.init()

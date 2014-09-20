@@ -327,4 +327,7 @@ ul.dr-list .info{
     text-align: left;
     float: left;
 }
+.filtersList.noScroll{
+    overflow-y: auto;
+}
 

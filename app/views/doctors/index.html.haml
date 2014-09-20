@@ -23,15 +23,23 @@
                 .inputContainer
                   %h6 Area
                   .selListWrap
-                    = select_tag("state_id", options_for_select(@areas.collect {|p| [ p.name.capitalize, p.id ] }),{class: "addressBox", title: "Select Area", prompt: "Select Area", tabindex: "1"})
+                    = select_tag("area_code", options_for_select(@areas.collect {|p| [ p.name.capitalize, p.id ] }),{class: "addressBox", title: "Select Area", prompt: "Select Area", tabindex: "1"})
 
                 .inputContainer
                   %h6 Specialty
                   %ul.filtersList
                     - SPECIALTIES.each do |specialty|
                       %li
-                        %input{filter_name: "specialties", name: "genre", type: "checkbox", value: specialty, id: "specialty#{specialty}"}
+                        %input{filter_name: "specialties", name: "specialties", type: "checkbox", value: specialty, id: "specialty#{specialty}"}
                         %label{for: "specialty#{specialty}"} #{specialty}
+
+                .inputContainer
+                  %h6 Timings
+                  %ul.filtersList.noScroll
+                    - TIMINGS.each do |time|
+                      %li
+                        %input{filter_name: "timings", name: "time", type: "checkbox", value: time, id: "time#{time}"}
+                        %label{for: "time#{time}"} #{time}
 
                 .inputContainer
                   %h6 Charges
@@ -39,11 +47,9 @@
                   #chargesSlider
 
                 .inputContainer
-                  .check_value
-                    %input#check-3{checked: true, filter_name: "is_paid", type: "checkbox", value: "0", filter_type: "int"}/
-                    %label{for: "check-3"} Free
-                    %input#check-4{checked: true, filter_name: "is_paid", type: "checkbox", value: "1", filter_type: "int"}/
-                    %label{for: "check-4"} Paid
+                  %h6 Expirience
+                  %label#years
+                  #expirienceSlider
 
       .span9.courseListContainer
         %ul.dr-list
