@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140920134556) do
+ActiveRecord::Schema.define(:version => 20140920150626) do
 
   create_table "appointments", :force => true do |t|
     t.integer  "patient_id"
@@ -26,15 +26,6 @@ ActiveRecord::Schema.define(:version => 20140920134556) do
 
   add_index "appointments", ["clinic_id"], :name => "index_appointments_on_clinic_id"
   add_index "appointments", ["patient_id"], :name => "index_appointments_on_patient_id"
-
-  create_table "availbilities", :force => true do |t|
-    t.string   "day"
-    t.datetime "from"
-    t.datetime "to"
-    t.integer  "clinic_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
 
   create_table "availbilities", :force => true do |t|
     t.string   "day"
@@ -88,6 +79,7 @@ ActiveRecord::Schema.define(:version => 20140920134556) do
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "permalink"
   end
 
   create_table "roles", :force => true do |t|
