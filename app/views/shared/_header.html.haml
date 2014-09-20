@@ -1,13 +1,11 @@
-%header.headerWrapper
-  .navbar.navbar-inverse.navbar-static-top
-    .navbar-inner.navigationOuter
-      .container
-        -if current_user
-          %li
-            = link_to t(:logout), destroy_user_session_path, :method => :delete
-          -if current_user.admin?
-            %li
-              = link_to t(:admin), admin_path
-        -else
-          %li
-            = link_to t(:login), new_user_session_path
+%header.header.sign_in
+  .content
+    %a.logo{:href => "/"} DOC FINDER
+    - if current_user
+      = link_to t(:logout), destroy_user_session_path, :method => :delete,:class => "login"
+      - if current_user.admin?
+        = link_to t(:admin), admin_path, :class => "login"
+    - else
+      = link_to t(:login), new_user_session_path, :class => "login"
+
+  .clear
