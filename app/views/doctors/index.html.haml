@@ -33,7 +33,7 @@
                         %input{filter_name: "specialties[]", name: "specialties", type: "checkbox", value: specialty.downcase, id: "specialty#{specialty}"}
                         %label{for: "specialty#{specialty}"} #{specialty}
 
-                .inputContainer
+                -#.inputContainer
                   %h6 Timings
                   %ul.filtersList.noScroll
                     - TIMINGS.each do |time|
@@ -54,7 +54,7 @@
       .span9.courseListContainer
         %ul.doctorsList
           - @doctors.each do |doctor|
-            %li{"data-name"=> "#{doctor.name}", "data-fees"=>"#{doctor.fees}", "data-years"=>"#{doctor.exp_in_years}", "data-symptoms"=>"#{doctor.meta_keyword}", "data-specialty"=>"#{doctor.expertise}"}
+            %li{"data-name"=> "#{doctor.name}", "data-fees"=>"#{doctor.fees.to_i}", "data-years"=>"#{doctor.exp_in_years}", "data-symptoms"=>"#{doctor.meta_keyword}", "data-specialty"=>"#{doctor.expertise}"}
               %img{:src=>"#{doctor.image}"}
               .dr-info
                 %h3
@@ -64,8 +64,8 @@
                   %br
                     practicing since #{doctor.experience.strftime("%Y")}
                 - @clinics.select{|c| c.doctor_id==doctor.id}.each do |clinic|
-                  %a{:href=>"javascript:void(0);", "data-area"=>"#{clinic.address1}"}
-                    #{clinic.address1}
+                  %a.clinic{:href=>"javascript:void(0);", "data-area"=>"#{clinic.address1}"}
+                    #{clinic.address1.capitalize}
 
 
 
