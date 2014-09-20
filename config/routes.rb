@@ -11,4 +11,5 @@ DocFinder::Application.routes.draw do
       resources :appointments
     end
   end
+  resources :patients
 end
