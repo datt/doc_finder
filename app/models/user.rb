@@ -10,7 +10,9 @@ class User < ActiveRecord::Base
   has_many :user_roles
 	has_many :roles, through: :user_roles
   has_one :patient
+  has_one :doctor
   # validates :patient, presence: true, :if => :patient?
+  # validates :doctor, presence: true, :if => :doctor?
   accepts_nested_attributes_for :patient
 
 	Role.order('name').each do |role|

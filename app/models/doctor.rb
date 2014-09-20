@@ -1,9 +1,9 @@
 class Doctor < ActiveRecord::Base
-  attr_accessible :name, :permalink, :email, :date_of_birth, :degree, :expertise, :phone_no, :practicing, :fees, :image
-  before_update :make_permalink
+  attr_accessible :name, :permalink, :email, :date_of_birth, :degree, :expertise, :phone_no, :practicing, :fees, :image, :user_id
   before_create :make_permalink
   has_many :clinics
   has_many :appointments, through: :clinics
+  belongs_to :user
   mount_uploader :image, ImageUploader
 
 
@@ -17,6 +17,14 @@ class Doctor < ActiveRecord::Base
     else
       find_with_ids(*args) rescue find_by_permalink(*args)
     end
+  end
+
+  def add_user
+    auto_password = Devise.friendly_token.first(10)
+    user = User.find_by_email(email)
+    user ||= User.create(email: email, password: auto_password, password_confirmation: auto_password)
+    user.user_roles.create(role_id: Role.find_by_name('doctor').try(:id)) unless user.doctor?
+    update_attributes!(user_id: user.try(:id))
   end
 
   protected

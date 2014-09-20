@@ -2,7 +2,7 @@ class Patient < ActiveRecord::Base
   attr_accessible :name, :age, :address, :contact, :user_id, :permalink
   has_many :appointments
   belongs_to :user
-  before_update :make_permalink
+
   before_create :make_permalink
   def to_param
     permalink? ? permalink : name.parameterize
