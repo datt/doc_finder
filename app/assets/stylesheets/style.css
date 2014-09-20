@@ -288,6 +288,10 @@ select {
    display: none;
 }
 
+.mobileAccordian{
+    margin: 0;
+}
+
 .mobileAccordian input[type='checkbox']{
     float: left !important;
     margin-right: 4px !important;
@@ -309,5 +313,18 @@ ul.dr-list img{
 ul.dr-list .info{
     float:left;
 }
+.filtersList{
+    list-style: none;
+    overflow-y: scroll;
+    max-height: 200px;
+}
 
+.filtersList li{
+    clear: both;
+}
+
+.filtersList label{
+    text-align: left;
+    float: left;
+}
 
