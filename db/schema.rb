@@ -58,8 +58,8 @@ ActiveRecord::Schema.define(:version => 20140920155331) do
     t.date     "date_of_birth"
     t.integer  "age"
     t.string   "email"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
     t.string   "permalink"
     t.string   "degree"
     t.text     "expertise"
@@ -68,8 +68,8 @@ ActiveRecord::Schema.define(:version => 20140920155331) do
     t.float    "fees"
     t.string   "image"
     t.string   "meta_keyword"
-    t.string   "experience"
-    t.string   "visiting_fee"
+    t.date     "experience"
+    t.decimal  "visiting_fee",  :precision => 5, :scale => 2
   end
 
   add_index "doctors", ["email"], :name => "index_doctors_on_email", :unique => true
