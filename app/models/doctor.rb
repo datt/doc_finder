@@ -20,7 +20,6 @@ class Doctor < ActiveRecord::Base
     end
   end
 
-
   def exp_in_years
     Date.today.year - experience.year
   end
