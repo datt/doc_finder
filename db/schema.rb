@@ -11,7 +11,47 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140920074816) do
+ActiveRecord::Schema.define(:version => 20140920110544) do
+
+  create_table "availbilities", :force => true do |t|
+    t.string   "day"
+    t.datetime "from"
+    t.datetime "to"
+    t.integer  "clinic_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "appointments", :force => true do |t|
+    t.integer  "patient_id"
+    t.string   "name"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.boolean  "cancel",     :default => false
+    t.integer  "clinic_id"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  add_index "appointments", ["clinic_id"], :name => "index_appointments_on_clinic_id"
+  add_index "appointments", ["patient_id"], :name => "index_appointments_on_patient_id"
+
+  create_table "clinics", :force => true do |t|
+    t.string   "name"
+    t.string   "address1"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
+    t.string   "zipcode"
+    t.string   "contact"
+    t.string   "lat"
+    t.string   "long"
+    t.integer  "doctor_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "clinics", ["doctor_id"], :name => "index_clinics_on_doctor_id"
 
   create_table "doctors", :force => true do |t|
     t.string   "name"
@@ -21,9 +61,24 @@ ActiveRecord::Schema.define(:version => 20140920074816) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.string   "permalink"
+    t.string   "degree"
+    t.text     "expertise"
+    t.string   "phone_no"
+    t.date     "practicing"
+    t.float    "fees"
   end
 
   add_index "doctors", ["email"], :name => "index_doctors_on_email", :unique => true
+
+  create_table "patients", :force => true do |t|
+    t.string   "name"
+    t.integer  "age"
+    t.string   "contact"
+    t.string   "address"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "name"

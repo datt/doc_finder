@@ -1,5 +1,5 @@
 <% if @doctors.any? %>
-  <table>
+  <table class="table table-hover table-bordered">
     <thead>
       <th>#</th>
       <th><%= t(:name) %></th>
@@ -12,8 +12,9 @@
           <td><%= index + 1 %></td>
           <td><%= link_to doctor.name, admin_doctor_path(doctor) %></td>
           <td><%= mail_to doctor.email%></td>
-          <td><%= link_to 'edit', edit_admin_doctor_path(doctor) %></td>
-          <td><%= link_to 'destroy', admin_doctor_path(doctor), method: :delete, confirmation: { date: 'Are you sure?'} %></td>
+          <td><%= link_to "Edit", edit_admin_doctor_path(doctor), class: 'btn btn-primary'%>
+          &nbsp;
+          <%= link_to "Delete", admin_doctor_path(doctor), method: :delete, confirmation: { date: 'Are you sure?'}, class: 'btn btn-danger' %></td>
         </tr>
       <%end%>
     </tbody>
