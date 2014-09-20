@@ -60,6 +60,7 @@ $(document).ready ->
 
     filterDoctorsList: ->
       console.log "filter"
+      $(".noDoc").hide()
       doctorsToShow = $.grep(s.doctorsElements, (element, index) ->
         $(element).data("fees") >= s.feeCurrentStart and $(element).data("fees") <= s.feeCurrentEnd and $(element).data("years") >= s.expCurrentStart and $(element).data("years") <= s.expCurrentEnd
       )
@@ -68,7 +69,7 @@ $(document).ready ->
       $(doctorsToShow).show()
 
       if $(".doctorsList li:visible").length == 0
-        alert("no data found");
+        $(".noDoc").show()
 
 
   Doctor.init()

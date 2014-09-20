@@ -27,7 +27,7 @@
 
                 .inputContainer
                   %h6 Specialty
-                  %ul.filtersList
+                  %ul.filtersList.specialtyFilter
                     - SPECIALTIES.each do |specialty|
                       %li
                         %input{filter_name: "specialties[]", name: "specialties", type: "checkbox", value: specialty.downcase, id: "specialty#{specialty}"}
@@ -66,6 +66,8 @@
                 - @clinics.select{|c| c.doctor_id==doctor.id}.each do |clinic|
                   %a.clinic{:href=>"javascript:void(0);", "data-area"=>"#{clinic.address1}"}
                     #{clinic.address1.capitalize}
+          %li.noDoc{style: "display: none"}
+            %label We're sorry, No doctor found.
 
 
 
