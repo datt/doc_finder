@@ -6,7 +6,8 @@
         %h4 doctors
 
         %form.searchForm{name: "searchText", type: "text",filter_name: "name"}
-          %input{placeholder: "Search with symptom or doctor", :type => "text"}
+          .searchBox
+            %input{placeholder: "Search with symptom or doctor", :type => "text", class: "searchHeader"}
           %input{:type => "submit", :value => ""}
 
       .span3

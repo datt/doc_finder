@@ -1,4 +1,5 @@
-<h2>Edit Doctor</h2>
+<h2>Edit Doctor's Profile</h2>
+<hr>
 <%= simple_form_for([:admin, @doctor], :html => {:class => 'form-horizontal' }) do |f| %>
-  <%= render :partial => 'form', :locals => { :f => f } %>
+  <%= render :partial => 'form', :locals => { :f => f, :name => "Udpate"} %>
 <%end%>
