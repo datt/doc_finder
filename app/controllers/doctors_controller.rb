@@ -2,6 +2,8 @@ class DoctorsController < ApplicationController
   skip_before_filter :authenticate_user!
   def index
     @areas = Area.where(city: "pune").to_a
+    @doctors = Doctor.includes(:clinics).where("clinics.city = 'pune'").to_a
+    @clinics = Clinic.where(doctor_id: @doctors.map(&:id)).to_a
   end
 
   def show
