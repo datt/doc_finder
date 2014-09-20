@@ -1,0 +1,38 @@
+<div class="control" data-hook="admin_doctor_form_left">
+  <div data-hook="control-group">
+    <%= f.input :name, required: true %>
+  </div>
+
+  <div data-hook="control-group">
+    <%= f.input :address1, required: true %>
+  </div>
+  <div data-hook="control-group">
+    <%= f.input :city, required: true %>
+  </div>
+  <div data-hook="control-group">
+    <%= f.input :state, required: true %>
+  </div>
+  <div data-hook="control-group">
+    <%= f.input :country, required: true, prompt: "Select Country" %>
+  </div>
+  <div data-hook="control-group">
+    <%= f.input :zipcode, required: true %>
+  </div>
+  <div data-hook="control-group">
+    <%= f.input :contact, required: true, label: 'Phone Number' %>
+  </div>
+  <div data-hook="control-group">
+    <%= f.input :lat, required: true, label: 'Latitude' %>
+  </div>
+  <div data-hook="control-group">
+    <%= f.input :long, required: true, label: 'Longitude' %>
+  </div>
+  <div data-hook="control-group">
+    <%= f.input :doctor_id, as: :hidden %>
+  </div>
+  <div data-hook="control-group">
+    <div class="controls">
+      <%= f.submit name, class: 'btn btn-large btn-primary' %>
+    </div>
+  </div>
+</div>

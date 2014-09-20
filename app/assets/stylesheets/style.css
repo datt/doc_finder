@@ -253,9 +253,8 @@ header .logo {
 
 select {
     width: 150px;
-    background-color: #fff;
-    border: 1px solid #ccc;
 }
+.adminContainer select{width: 220px;}
 
 .searchBox {
     float: left;
@@ -287,6 +286,7 @@ select {
 .searchForm input[type='submit']{
    display: none;
 }
+.adminContainer{min-height: 585px;}
 
 .mobileAccordian{
     margin: 0;
@@ -318,7 +318,6 @@ select {
     overflow-y: scroll;
     max-height: 200px;
 }
-
 .filtersList li{
     clear: both;
 }
@@ -330,4 +329,3 @@ select {
 .filtersList.noScroll{
     overflow-y: auto;
 }
-
