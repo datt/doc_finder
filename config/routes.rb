@@ -1,7 +1,10 @@
 DocFinder::Application.routes.draw do
-
+  root :to => 'home#index'
   devise_for :users
-
+  namespace :admin do
+    resources :doctors
+  end
+  match '/admin', :to => 'admin/doctors#index', :as => :admin
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # create roles
-roles = [{name: 'patient', display_name: 'Patient'}, {name: 'admin', display_name: 'Admin'}]
+roles = [{name: 'patient', display_name: 'Patient'}, {name: 'doctor', display_name: 'Doctor'}, {name: 'admin', display_name: 'Admin'}]
 ActiveRecord::Base.connection.execute('truncate roles');
 Role.create!(roles)
 
