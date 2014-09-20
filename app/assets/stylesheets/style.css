@@ -296,21 +296,21 @@ select {
     float: left !important;
     margin-right: 4px !important;
 }
-ul.dr-list{
+.doctorsList{
     width: 100%;
     border-radius: 5px;
     text-align: left;
 }
-ul.dr-list li{
+.doctorsList li{
     clear:both;
     padding: 10px;
     margin-bottom: 20px;
     background: #f8f8f8;
 }
-ul.dr-list img{
+.doctorsList img{
     float: left;
 }
-ul.dr-list .info{
+.doctorsList .info{
     float:left;
 }
 .filtersList{
