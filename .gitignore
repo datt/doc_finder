@@ -13,3 +13,16 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+npm-debug.log
+public/npm-debug.log
+Gemfile.lock
+npm-debug.log
+config/database.yml
+config/mongoid.yml
+/.idea/
+.idea/*
+.idea/workspace.xml
+/.idea/workspace.xml
+*.dump
+*.sql
+config/database.yml
