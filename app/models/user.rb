@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
 	Role.order('name').each do |role|
 		define_method("#{role.name}?") do
-			user.roles.include? role
+			roles.include? role
 		end
 	end
 end
