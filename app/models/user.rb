@@ -18,4 +18,25 @@ class User < ActiveRecord::Base
 			roles.include? role
 		end
 	end
+
+  def self.from_omniauth(auth)
+    auto_password = Devise.friendly_token.first(10)
+    where(email: auth.info.email).first_or_initialize.tap do |user|
+      user.email = auth.info.email
+      user.password = auto_password
+      user.password_confirmation = auto_password
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.name = auth.info.name
+      user.oauth_token = auth.credentials.token
+      user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+      begin
+        user.build_patient(name: auth.info.name, :age => Date.today.year - auth.extra.raw_info.birthday.to_date.year)
+      rescue Exception => e
+        Rails.logger.info e.message
+      end
+      user.save!
+      user.user_roles.create(role_id: Role.find_by_name('patient').try(:id)) unless user.patient?
+    end
+  end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140920150626) do
+ActiveRecord::Schema.define(:version => 20140920155331) do
 
   create_table "appointments", :force => true do |t|
     t.integer  "patient_id"
@@ -67,6 +67,9 @@ ActiveRecord::Schema.define(:version => 20140920150626) do
     t.date     "practicing"
     t.float    "fees"
     t.string   "image"
+    t.string   "meta_keyword"
+    t.string   "experience"
+    t.string   "visiting_fee"
   end
 
   add_index "doctors", ["email"], :name => "index_doctors_on_email", :unique => true
@@ -112,6 +115,11 @@ ActiveRecord::Schema.define(:version => 20140920150626) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
