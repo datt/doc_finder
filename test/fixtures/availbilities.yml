@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  day: MyString
+  from: 2014-09-20 16:27:49
+  to: 2014-09-20 16:27:49
+  clinic_id: 1
+
+two:
+  day: MyString
+  from: 2014-09-20 16:27:49
+  to: 2014-09-20 16:27:49
+  clinic_id: 1
