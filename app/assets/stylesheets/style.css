@@ -287,25 +287,29 @@ select {
 }
 .adminContainer{min-height: 585px;}
 
+.mobileAccordian{
+    margin: 0;
+}
+
 .mobileAccordian input[type='checkbox']{
     float: left !important;
     margin-right: 4px !important;
 }
-ul.dr-list{
+.doctorsList{
     width: 100%;
     border-radius: 5px;
     text-align: left;
 }
-ul.dr-list li{
+.doctorsList li{
     clear:both;
     padding: 10px;
     margin-bottom: 20px;
     background: #f8f8f8;
 }
-ul.dr-list img{
+.doctorsList img{
     float: left;
 }
-ul.dr-list .info{
+.doctorsList .info{
     float:left;
 }
 a#sign_in{
@@ -328,4 +332,42 @@ input.btn{
     text-shadow: none;
     color: #FFFFFF;
     font-weight: bold;
+}
+.filtersList{
+    list-style: none;
+    overflow-y: scroll;
+    max-height: 200px;
+}
+.filtersList li{
+    clear: both;
+}
+
+.filtersList label{
+    text-align: left;
+    float: left;
+}
+.filtersList.noScroll{
+    overflow-y: auto;
+}
+.contentOverlay, .takingOverlay {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  z-index: 99;
+  background: url(/assets/loading.gif) no-repeat center center;
+}
+
+.takingOverlay {
+  background-color: #333333;
+  opacity: 0.4;
+  filter: alpha(opacity = 40);
+}
+
+.contentOverlay {
+  background-color: white;
+  opacity: 0.8;
+  filter: alpha(opacity = 80);
 }

@@ -23,6 +23,10 @@ module Admin
       end
     end
 
+    def show
+      @appointments = @doctor.appointments
+    end
+
     def destroy
       @doctor.destroy
       redirect_to admin_doctors_path

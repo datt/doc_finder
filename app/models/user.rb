@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
 	end
 
   def self.from_omniauth(auth)
+    ap auth
     auto_password = Devise.friendly_token.first(10)
     where(email: auth.info.email).first_or_initialize.tap do |user|
       user.email = auth.info.email

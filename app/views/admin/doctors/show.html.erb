@@ -8,4 +8,25 @@
 	<div class="span2"><strong>Exprience</strong></div><div class="span3"><%= time_ago_in_words(@doctor.practicing) %></div><div class="span7">&nbsp;</div>
 	<div class="span2"><strong>DOB</strong></div><div class="span3"><%= @doctor.date_of_birth %></div><div class="span7">&nbsp;</div>
 	<div class="span2"><strong>Image</strong></div><div class="span3"><%= image_tag @doctor.image_url(:thumb).to_s %></div><div class="span7">&nbsp;</div>
+  <div class="span12">
+    <h2 align='left'>Appointments</h2>
+    <table class="table">
+      <thead>
+        <th>Title</th>
+        <th>Start At</th>
+        <th>End At</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <% @appointments.each do |appointment| %>
+          <tr id="<%=appointment.id%>">
+            <td><%= appointment.name %></td>
+            <td><%= l appointment.start_at, :format => :short%></td>
+            <td><%= l appointment.end_at, :format => :short %></td>
+            <td><%= link_to 'Cancel', doctor_clinic_appointment_path(@doctor.id, appointment.clinic_id, appointment), :remote => true, :method => :delete, confirmation: { data: 'Are you sure?'}, class: 'btn btn-danger' %></td>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>
+  </div>
 </div>
