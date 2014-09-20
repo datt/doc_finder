@@ -4,4 +4,6 @@ class Appointment < ActiveRecord::Base
   validates :day, :time, presence: true
   belongs_to :patient
   belongs_to :clinic
+
+  scope :active, -> { where(cancel: false) }
 end
