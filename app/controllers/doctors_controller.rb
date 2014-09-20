@@ -8,4 +8,9 @@ class DoctorsController < ApplicationController
     @doctor = Doctor.find(params[:id])
     redirect_to :back if @doctor.nil?
   end
+
+  def search
+    @doctors = Doctor.search(params[:query])
+    render :json => @doctors.to_json
+  end
 end
