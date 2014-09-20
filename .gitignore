@@ -26,3 +26,4 @@ config/mongoid.yml
 *.dump
 *.sql
 config/database.yml
+db/schema.rb

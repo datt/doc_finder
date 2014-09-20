@@ -1,0 +1,51 @@
+#calendar.content
+
+:javascript
+  $(document).ready(function(){
+    var date = new Date();
+    var d = date.getDate();
+    var m = date.getMonth();
+    var y = date.getFullYear();
+    var calendar = $('#calendar').fullCalendar({
+      header:
+        {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'month,agendaWeek,agendaDay'
+        },
+      selectable: true,
+      selectHelper: true,
+      select: function(start, end, allDay){
+        var title = prompt("Please enter your name");
+        if (title){
+          $.ajax({
+            type: 'POST',
+            url: "#{doctor_clinic_appointments_path(@doctor, @clinic)}",
+            dataType: 'json',
+            data: {
+              appointment: {
+                start_at: start,
+                end_at: end,
+                name: title
+              }
+            },
+            success: function(doc) {
+               calendar.fullCalendar('renderEvent',
+                {
+                  title: title,
+                  start: start,
+                  end: end,
+                  allDay: allDay,
+                  color: 'yellow',
+                  textColor: 'balck'
+                },
+                true
+              );
+            }
+          });
+        }
+        calendar.fullCalendar('unselect');
+      },
+      events: #{raw @appointments.to_json}
+    });
+  });

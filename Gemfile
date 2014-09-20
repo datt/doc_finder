@@ -35,6 +35,8 @@ end
 gem 'haml', '4.0.3'
 gem 'haml-rails', '0.4'
 gem 'fullcalendar-rails'
+gem 'omniauth-oauth2'
+gem 'omniauth-facebook'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

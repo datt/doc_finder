@@ -17,7 +17,17 @@
 .searchContainer{
   margin-top: 40px;
 }
-
+body
+    {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 14px;
+      font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+    }
+.calendar{
+  width: 900px;
+  margin: 0 auto;
+}
 .courseListContainer {
   position: relative;
   margin-top: 4px;
@@ -566,3 +576,4 @@
   border: solid 1px #cccccc;
   background: url("searchWhite.png") 280px no-repeat;
 }
+

@@ -2,10 +2,18 @@
   .content
     %a.logo{:href => "/"} DOC FINDER
     - if current_user
-      = link_to t(:logout), destroy_user_session_path, :method => :delete,:class => "login"
-      - if current_user.admin?
-        = link_to t(:admin), admin_path, :class => "login"
+      %ul
+        -if current_user.patient.present?
+          %li
+            = link_to t(:my_account), patient_path(current_user.patient), :class => "btn-primary login"
+        %li
+          = link_to t(:logout), destroy_user_session_path, :method => :delete,:class => "btn-primary login", id: 'sign_out'
+        -if current_user.admin?
+          %li
+            = link_to t(:admin), admin_path, :class => "login"
     - else
-      = link_to t(:login), new_user_session_path, :class => "login"
+      %ul
+        %li
+          = link_to t(:login), new_user_session_path, :class => "login"
 
   .clear

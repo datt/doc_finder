@@ -10,7 +10,7 @@
         .form-actions
           = f.button :submit, "Sign in"
     .sign_right.col-md-4.col-sm-12
-      %button.btn.btn-primary.btn-block.btn-facebook{:type => "button"} Login With Facebook
+      = link_to "Login With Facebook", '/auth/facebook', class: 'btn btn-primary btn-block btn-facebook', id: 'sign_in'
     .clear
     .bottom_sign_in_links
       = render "devise/shared/links"
