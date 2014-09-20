@@ -13,6 +13,17 @@
     <%= f.input :date_of_birth, as: :string, class: 'datepicker'%>
   </div>
   <div data-hook="control-group">
-    <%= f.submit %>
+    <%= f.input :degree, required: true %>
+  </div>
+  <div data-hook="control-group">
+    <%= f.input :expertise, required: true %>
+  </div>
+  <div data-hook="control-group">
+    <%= f.input :practicing,  as: :string, class: 'datepicker', required: true %>
+  </div>
+  <div data-hook="control-group">
+    <div class="controls">
+      <%= f.submit 'Create', class: 'btn btn-large btn-primary' %>
+    </div>
   </div>
 </div>
