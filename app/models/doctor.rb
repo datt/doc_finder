@@ -3,6 +3,7 @@ class Doctor < ActiveRecord::Base
   before_update :make_permalink
   before_create :make_permalink
   has_many :clinics
+  has_many :appointments, through: :clinics
   mount_uploader :image, ImageUploader
 
 
