@@ -1,10 +1,68 @@
-%section
+
+%section.cousreListWrapper
+  .container
+    .row
+      .courseListContainer.pull-right.searchContainer
+        %h4 doctors
+
+        %form.searchForm{name: "searchText", type: "text",filter_name: "name"}
+          .searchBox
+            %input{placeholder: "Search with symptom or doctor", :type => "text", class: "searchHeader"}
+          %input{:type => "submit", :value => ""}
+
+      .span3
+        .filterWrapper
+          .filterHeading
+            %a.openFilter
+            %h4 Filter criteria
+            %a.resetLink#resetFilter{href: "javascript:void(0);"} Reset
+          %ul.mobileAccordian
+            %li
+              %a
+              .accordianContainer
+                .inputContainer
+                  %h6 location
+                  .selListWrap
+                    %select{class: "addressBox", title: "Select state", prompt: "Select State", tabindex: "1"})
+
+                .inputContainer
+                  %h6 Recommended For
+                  %label.all{for: "check-1"} Everyone
+                  %input.all#check-1{name: "genre", type: "checkbox", value: "All", checked: true, filter_name: "user_types"}/
+                  - 3.times do |user_type|
+                    %label{for: "user#{user_type}"}
+                    %input{filter_name: "user_types", name: "genre", type: "checkbox", value: user_type, id: "user#{user_type}"}
+
+                .inputContainer
+                  %h6 Category
+                  %label.all{for: "check-2"} All
+                  - 3.times do |c|
+                    %input{filter_name: "course_type", type: "checkbox", value: c,checked: (false), id: "cat#{c}"}/
+                    %label{for: "cat#{c}"}
+
+                .inputContainer
+                  %input#check-3{checked: true, filter_name: "is_paid", type: "checkbox", value: "0", filter_type: "int"}/
+                  %label{for: "check-3"} Free
+                  %input#check-4{checked: true, filter_name: "is_paid", type: "checkbox", value: "1", filter_type: "int"}/
+                  %label{for: "check-4"} Paid
+
+      .span9.courseListContainer
+        .dn#divParams{"data-courseType" => "#{params[:course_type]}", "data-userType" => "#{params[:user_type]}"}
+          / The Map gets drawn here!
+
+-#%section
   .container
     .row
       .searchContainer
         .span3.bs-docs-sidebar
           .filters
-          %ul Specialty
+            Filters
+          .filterHeading Specialty
+          %ul.filterList
+            %li
+              %label{for: "#checkbox1"}
+                %input#checkbox1{type: "checkbox"} orthopedic
+            %li
           %ul Methodology
           %ul Timings
           %ul Expirience
