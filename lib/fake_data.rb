@@ -11,6 +11,7 @@ class FakeData
           city: area[j].city,
           zipcode: area[j].zipcode,
           country: 'India',
+          contact: Faker::Number.number(10),
           state: 'Maharashtra'
         )
         clinic.update_lat_long

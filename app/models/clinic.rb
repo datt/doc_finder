@@ -6,14 +6,17 @@ class Clinic < ActiveRecord::Base
   has_many :appointments
 
   def update_lat_long
-    url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{address}"
-    response = RestClient.get url
-    response = JSON.parse(response)
-    response = response['results'][0]
-    if response.present?
+    begin
+      url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{address}"
+      response = RestClient.get url
+      response = JSON.parse(response)
+      response = response['results'][0]
       lat = response['geometry']['location']['lat']
       long = response['geometry']['location']['lng']
-      save
+      update_attributes!(lat: lat, long: long)
+    rescue Exception => e
+      Rails.logger.info e.message
+      p e.message
     end
   end
 
