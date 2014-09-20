@@ -34,12 +34,9 @@
                         %label{for: "specialty#{specialty}"} #{specialty}
 
                 .inputContainer
-                  %h6 Category
-                  %label.all{for: "check-2"} All
-                  - 3.times do |c|
-                    .check_value
-                      %input{filter_name: "course_type", type: "checkbox", value: c,checked: (false), id: "cat#{c}"}/
-                      %label{for: "cat#{c}"}
+                  %h6 Charges
+                  %label#amount
+                  #chargesSlider
 
                 .inputContainer
                   .check_value
