@@ -39,5 +39,10 @@ $(document).ready ->
           $("#years").text "#{ui.values[0]} years to #{ui.values[1]} years"
           return
 
+      $(".searchHeader").on "input", (e)->
+        if $(".searchHeader").val().length >= 3
+          #make ajax call
+          console.log("change")
+
 
   Doctor.init()
