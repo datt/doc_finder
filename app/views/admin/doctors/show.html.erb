@@ -1,0 +1,11 @@
+<h2>Profiel Details of Dr. <%= @doctor.name %></h2>
+<hr>
+<div class="row">
+	<div class="span2"><strong>Name</strong></div><div class="span3"><%= @doctor.name %></div><div class="span7">&nbsp;</div>
+	<div class="span2"><strong>Email</strong></div><div class="span3"><%= @doctor.email %></div><div class="span7">&nbsp;</div>
+	<div class="span2"><strong>Degree</strong></div><div class="span3"><%= @doctor.degree %></div><div class="span7">&nbsp;</div>
+	<div class="span2"><strong>Expertise</strong></div><div class="span3"><%= @doctor.expertise %></div><div class="span7">&nbsp;</div>
+	<div class="span2"><strong>Exprience</strong></div><div class="span3"><%= time_ago_in_words(@doctor.practicing) %></div><div class="span7">&nbsp;</div>
+	<div class="span2"><strong>DOB</strong></div><div class="span3"><%= @doctor.date_of_birth %></div><div class="span7">&nbsp;</div>
+	<div class="span2"><strong>Image</strong></div><div class="span3"><%= image_tag @doctor.image_url(:thumb).to_s %></div><div class="span7">&nbsp;</div>
+</div>

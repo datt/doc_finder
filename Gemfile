@@ -24,6 +24,9 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'simple_form'
 gem "cancan"
+gem 'kaminari'
+gem 'carrierwave'
+gem "rmagick"
 group :development do
 	gem 'awesome_print'
 end
