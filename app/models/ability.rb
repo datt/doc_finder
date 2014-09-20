@@ -13,7 +13,7 @@ class Ability
       can :manage, Appointment, :patient_id => user.patient.id
     elsif user.doctor?
       can [:admin, :manage], Doctor, :user_id => user.id
-      can [:admin, :manage], Patient, :clinic_id => user.doctor.clinics.map(&:id)
+      can [:admin, :manage], Patient, :id => user.doctor.appointments.map(&:patient_id)
       can :manage, Appointment, :clinic_id => user.doctor.clinics.map(&:id)
     else
       can :read, :all

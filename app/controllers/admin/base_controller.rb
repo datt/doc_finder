@@ -16,5 +16,8 @@ module Admin
         authorize! :admin, record
         authorize! action, record
       end
+      def model_class
+      controller_name.classify.constantize
+    end
   end
 end
