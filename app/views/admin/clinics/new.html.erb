@@ -1,0 +1,5 @@
+<h2>Create Clinic</h2>
+<hr>
+<%= simple_form_for([:admin, @clinic], :html => {:class => 'form-horizontal' }) do |f| %>
+  <%= render :partial => 'form', :locals => { :f => f, :name => "Create" } %>
+<%end%>

@@ -253,9 +253,8 @@ header .logo {
 
 select {
     width: 150px;
-    background-color: #fff;
-    border: 1px solid #ccc;
 }
+.adminContainer select{width: 220px;}
 
 .searchBox {
     float: left;
@@ -287,6 +286,7 @@ select {
 .searchForm input[type='submit']{
    display: none;
 }
+.adminContainer{min-height: 585px;}
 
 .mobileAccordian input[type='checkbox']{
     float: left !important;
@@ -309,5 +309,3 @@ ul.dr-list img{
 ul.dr-list .info{
     float:left;
 }
-
-
