@@ -11,3 +11,8 @@
  *= require_self
  *= require_tree .
  */
+
+
+.searchContainer{
+  margin-top: 40px;
+}

@@ -5,6 +5,8 @@ DocFinder::Application.routes.draw do
     resources :doctors
   end
   match '/admin', :to => 'admin/doctors#index', :as => :admin
+
+  resources :doctors
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
