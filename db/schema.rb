@@ -11,7 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140920074816) do
+ActiveRecord::Schema.define(:version => 20140920101748) do
+
+  create_table "clinics", :force => true do |t|
+    t.string   "name"
+    t.string   "address1"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
+    t.string   "zipcode"
+    t.string   "contact"
+    t.string   "lat"
+    t.string   "long"
+    t.integer  "doctor_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "clinics", ["doctor_id"], :name => "index_clinics_on_doctor_id"
 
   create_table "doctors", :force => true do |t|
     t.string   "name"
