@@ -18,6 +18,9 @@
   <div data-hook="control-group">
     <%= f.input :image, as: :file %>
   </div>
+   <div data-hook="control-group">
+    <%= f.input :fees, required: true %>
+  </div>
   <div data-hook="control-group">
     <%= f.input :expertise, as: :text, required: true, :input_html => {:cols => 40, :rows => 5 } %>
   </div>

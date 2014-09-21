@@ -1,5 +1,6 @@
 DocFinder::Application.routes.draw do
   root :to => 'home#index'
+  get 'prescription', to: 'home#prescription'
   match 'auth/:provider/callback', to: 'sessions#create'
   match 'auth/failure', to: redirect('/')
 

@@ -371,3 +371,36 @@ input.btn{
   opacity: 0.8;
   filter: alpha(opacity = 80);
 }
+.doctorsList .noDoc{
+    margin: 150px 0 0 50px;
+    width: 600px;
+    text-align: center;
+    background-color: #DDD;
+    border-radius: 7px;
+}
+.noDoc label{
+    font: normal 30px/40px verdana;
+}
+.clinic_details{
+    margin-left: 50px;
+}
+.clinic_details .span2{
+    font-weight: bold;
+}
+.basicInfo,.communityRating, .userRating{
+    float: left;
+}
+.detailsInfo, .rating{
+    float: left;
+    margin: 50px;
+}
+.detailsInfo .expertise{
+    margin: 20px 0;
+}
+.communityRating, .userRating{
+   width: 200px;
+}
+span.basis{
+    width: 76px;
+    display: inline-block;
+}
