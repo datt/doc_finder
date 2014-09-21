@@ -24,4 +24,8 @@ class Clinic < ActiveRecord::Base
     add = [name, address1, city, state, country, zipcode].join("+")
     add = add.gsub(/\s+/, "")
   end
+
+  def address_with_store
+    [name, address1, city, state, country, zipcode].compact.join("<br/>")
+  end
 end

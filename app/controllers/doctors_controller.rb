@@ -1,5 +1,5 @@
 class DoctorsController < ApplicationController
-  skip_before_filter :authenticate_user!, :only => [:index, :show, :search]
+  skip_before_filter :authenticate_user!, :only => [:index, :show, :search, :gmap]
   def index
     @areas = Area.where(city: "pune").to_a
   end
@@ -33,5 +33,20 @@ class DoctorsController < ApplicationController
       }
     end
     render :json => doctors.to_json
+  end
+
+  def gmap
+
+    @doctor = Doctor.find_by_permalink(params[:id])
+    @locations = []
+
+    @doctor.clinics.each do |clinic|
+      @locations << {
+            "lat" => "#{clinic.try(:lat)}",
+            "lng" => "#{clinic.try(:long)}",
+            "infowindow" => "#{clinic.address_with_store rescue clinic.address1}"
+          }
+    end
+    ap @locations
   end
 end
