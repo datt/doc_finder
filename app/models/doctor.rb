@@ -2,7 +2,6 @@ class Doctor < ActiveRecord::Base
   attr_accessible :name, :permalink, :email, :date_of_birth, :degree, :expertise, :phone_no, :practicing, :fees, :image, :user_id, :experience, :meta_keyword
   before_create :make_permalink
   has_many :clinics, dependent: :destroy
-  has_many :clinics
   has_many :appointments, through: :clinics
   belongs_to :user
   mount_uploader :image, ImageUploader
