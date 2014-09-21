@@ -23,7 +23,7 @@
                 .inputContainer
                   %h6 Area
                   .selListWrap
-                    = select_tag("area_code", options_for_select(@areas.collect {|p| [ p.name.capitalize, p.id ] }),{class: "addressBox", title: "Select Area", prompt: "Select Area", tabindex: "1"})
+                    = select_tag("area_code", options_for_select(@areas.collect {|p| [ p.name.capitalize, p.zipcode ] }),{class: "addressBox", title: "Select Area", prompt: "Select Area", tabindex: "1"})
 
                 .inputContainer
                   %h6 Specialty
@@ -64,7 +64,7 @@
                   %br
                     practicing since #{doctor.experience.strftime("%Y")}
                 - @clinics.select{|c| c.doctor_id==doctor.id}.each do |clinic|
-                  %a.clinic{:href=>"javascript:void(0);", "data-area"=>"#{clinic.address1}"}
+                  %a.clinic{:href=>"javascript:void(0);", "data-area"=>"#{clinic.zipcode}"}
                     #{clinic.address1.capitalize}
           %li.noDoc{style: "display: none"}
             %label We're sorry, No doctor found.

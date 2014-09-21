@@ -14,6 +14,7 @@ $(document).ready ->
       feeCurrentEnd: 300
       doctorsElements: $(".doctorsList li")
       prevKeywordLength: 0
+      noElements: -> $(".doctorsList li:visible").length == 0
 
     init :->
       s = @settings
@@ -56,8 +57,14 @@ $(document).ready ->
 
       $(".searchHeader").on "input", (e)->
         Doctor.filterDoctorsList()
-        Doctor.nameOrSymptomSearch($(".searchHeader").val())
-        prevKeywordLength = $(".searchHeader").val().length
+        Doctor.nameOrSymptomSearch($(this).val())
+        prevKeywordLength = $(this).val().length
+
+      $("#area_code").on "change", (e)->
+        console.log "select tag area_code",$(this).val()
+        #if $(this).val()=="" || $(".doctorsList li:visible").length == 0
+        Doctor.filterDoctorsList()
+        Doctor.searchAreaWise($(this).val())
 
     filterDoctorsList: ->
       console.log "filter"
@@ -70,6 +77,8 @@ $(document).ready ->
 
     nameOrSymptomSearch: (keyword)->
       keyword = $.trim(keyword.toLowerCase())
+      if keyword.length==0
+        return false
       if $(".doctorsList li:visible").length == 0
         Doctor.filterDoctorsList()
       else
@@ -79,6 +88,11 @@ $(document).ready ->
             ($(element).data("symptoms")!= undefined && $(element).data("symptoms").toLowerCase().indexOf(keyword)!=-1) || ($(element).data("name")!= undefined && $(element).data("name").toLowerCase().indexOf(keyword)!=-1)
           )
           Doctor.showHideDocElements(doctorsToShow)
+
+    searchAreaWise: (area_code)->
+      $()
+      doctorsToShow = $("[data-area='#{area_code}']").parents("li:visible")
+      Doctor.showHideDocElements(doctorsToShow)
 
     showHideDocElements: (doctorsToShow)->
       $(s.doctorsElements).hide()
