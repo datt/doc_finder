@@ -15,7 +15,7 @@
           .filterHeading
             %a.openFilter
             %h4 Filter criteria
-            %a.resetLink#resetFilter{href: "javascript:void(0);"} Reset
+            -#%a.resetLink#resetFilter{href: "javascript:void(0);"} Reset
           %ul.mobileAccordian
             %li
               %a
@@ -30,7 +30,7 @@
                   %ul.filtersList.specialtyFilter
                     - SPECIALTIES.each do |specialty|
                       %li
-                        %input{filter_name: "specialties[]", name: "specialties", type: "checkbox", value: specialty.downcase, id: "specialty#{specialty}"}
+                        %input.specialty{filter_name: "specialties[]", name: "specialties", type: "checkbox", value: specialty.downcase, id: "specialty#{specialty}"}
                         %label{for: "specialty#{specialty}"} #{specialty}
 
                 -#.inputContainer
