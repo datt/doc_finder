@@ -27,13 +27,13 @@
 
                 .inputContainer
                   %h6 Specialty
-                  %ul.filtersList
+                  %ul.filtersList.specialtyFilter
                     - SPECIALTIES.each do |specialty|
                       %li
                         %input{filter_name: "specialties[]", name: "specialties", type: "checkbox", value: specialty.downcase, id: "specialty#{specialty}"}
                         %label{for: "specialty#{specialty}"} #{specialty}
 
-                .inputContainer
+                -#.inputContainer
                   %h6 Timings
                   %ul.filtersList.noScroll
                     - TIMINGS.each do |time|
@@ -53,20 +53,21 @@
 
       .span9.courseListContainer
         %ul.doctorsList
-          %li
-            %img{:src=>"images/img1.jpg"}
-            .dr-info
-              %h3
-                Dr.Sujay R Naik
-              %p
-                Ophthalmologist, Eye Surgeon, Pediatric Ophthalmologist
-                %br
-                  practicing since 2009
-              -#%img{src="images/img1.jpg"}
-              %a{:href=>"javascript:void(0);"}
-                Chinchwad
-              %a{:href=>"javascript:void(0);"}
-                Nigadi
+          - @doctors.each do |doctor|
+            %li{"data-name"=> "#{doctor.name}", "data-fees"=>"#{doctor.fees.to_i}", "data-years"=>"#{doctor.exp_in_years}", "data-symptoms"=>"#{doctor.meta_keyword}", "data-specialty"=>"#{doctor.expertise}"}
+              %img{:src=>"#{doctor.image}"}
+              .dr-info
+                %h3
+                  %a{:href=>"/doctors/#{doctor.id}"} Dr. #{doctor.name.gsub(/(Mr|Dr|Mrs|Ms)|\./i,"")}
+                %p
+                  #{doctor.expertise}
+                  %br
+                    practicing since #{doctor.experience.strftime("%Y")}
+                - @clinics.select{|c| c.doctor_id==doctor.id}.each do |clinic|
+                  %a.clinic{:href=>"javascript:void(0);", "data-area"=>"#{clinic.address1}"}
+                    #{clinic.address1.capitalize}
+          %li.noDoc{style: "display: none"}
+            %label We're sorry, No doctor found.
 
 
 
