@@ -28,8 +28,8 @@ class DoctorsController < ApplicationController
           {
             :id => (clinic.id || ''),
             :name => (clinic.name || ''),
-            :lat => (clinic.lat || ''),
-            :lng => (clinic.long || '')
+            :lat => (clinic.lat || '').to_f,
+            :lng => (clinic.long || '').to_f
           }
         end
       }
