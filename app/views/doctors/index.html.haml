@@ -54,7 +54,7 @@
       .span9.courseListContainer
         %ul.doctorsList
           - @doctors.each do |doctor|
-            %li{"data-name"=> "#{doctor.name}", "data-fees"=>"#{doctor.fees.to_i}", "data-years"=>"#{doctor.exp_in_years}", "data-symptoms"=>"#{doctor.meta_keyword}", "data-specialty"=>"#{doctor.expertise}"}
+            %li{"data-name"=> "#{doctor.name}", "data-fees"=>"#{doctor.fees.to_i}", "data-years"=>"#{doctor.exp_in_years}", "data-symptoms"=>"#{doctor.meta_keyword}", "data-specialty"=>"#{doctor.expertise.downcase}"}
               %img{:src=>"#{doctor.image}"}
               .dr-info
                 %h3

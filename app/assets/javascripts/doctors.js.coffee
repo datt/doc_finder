@@ -66,6 +66,25 @@ $(document).ready ->
         Doctor.filterDoctorsList()
         Doctor.searchAreaWise($(this).val())
 
+      $(".specialty").on "click", (e)->
+        checklist = Doctor.getCheckList()
+        Doctor.filterDoctorsList()
+
+    getCheckList: ->
+      $("input[type=checkbox]:checked").map((_, el) ->
+        $(el).val()
+      ).get()
+
+    searchSpecialtyWise: (checklist)->
+      if checklist.length==0
+        return false
+      else
+        doctorsToShow = $(".doctorsList li:visible")
+        doctorsToShow = $.grep(doctorsToShow, (element, index) ->
+          $.inArray($(element).data("specialty"), checklist)
+        )
+        Doctor.showHideDocElements(doctorsToShow)
+
     filterDoctorsList: ->
       console.log "filter"
       $(".noDoc").hide()
@@ -97,7 +116,7 @@ $(document).ready ->
     showHideDocElements: (doctorsToShow)->
       $(s.doctorsElements).hide()
       $(doctorsToShow).show()
-
+      console.log "Visible Div",$(".doctorsList li:visible").length
       if $(".doctorsList li:visible").length == 0
         $(".noDoc").show()
 
