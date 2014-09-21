@@ -15,21 +15,21 @@ class DoctorsController < ApplicationController
     @doctors = Doctor.search(params[:query]).page(params[:page]).per(10)
     doctors = @doctors.map do |doctor|
       {
-        :id => doctor.id,
-        :name => doctor.name,
-        :date_of_birth => doctor.date_of_birth,
-        :email => doctor.email,
-        :degree => doctor.degree,
-        :expertise => doctor.expertise,
-        :experience => doctor.experience,
-        :visiting_fees => doctor.visiting_fee,
+        :id => (doctor.id || ''),
+        :name => (doctor.name || ''),
+        :date_of_birth => (doctor.date_of_birth || ''),
+        :email => (doctor.email || ''),
+        :degree => (doctor.degree || ''),
+        :expertise => (doctor.expertise || ''),
+        :experience => (doctor.experience || ''),
+        :visiting_fees => (doctor.visiting_fee || ''),
         :image => "#{SITE_HOST}#{doctor.image.url}",
         :clinics => doctor.clinics.map do |clinic|
           {
-            :id => clinic.id,
-            :name => clinic.name,
-            :lat => clinic.lat,
-            :lng => clinic.long
+            :id => (clinic.id || ''),
+            :name => (clinic.name || ''),
+            :lat => (clinic.lat || ''),
+            :lng => (clinic.long || '')
           }
         end
       }
