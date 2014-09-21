@@ -13,6 +13,7 @@ $(document).ready ->
       feeCurrentStart: 75
       feeCurrentEnd: 300
       doctorsElements: $(".doctorsList li")
+      prevKeywordLength: 0
 
     init :->
       s = @settings
@@ -54,9 +55,9 @@ $(document).ready ->
           s.expCurrentEnd = ui.values[1]
 
       $(".searchHeader").on "input", (e)->
-        if $(".searchHeader").val().length >= 3
-          #make ajax call
-          console.log("change")
+        Doctor.filterDoctorsList()
+        Doctor.nameOrSymptomSearch($(".searchHeader").val())
+        prevKeywordLength = $(".searchHeader").val().length
 
     filterDoctorsList: ->
       console.log "filter"
@@ -65,6 +66,21 @@ $(document).ready ->
         $(element).data("fees") >= s.feeCurrentStart and $(element).data("fees") <= s.feeCurrentEnd and $(element).data("years") >= s.expCurrentStart and $(element).data("years") <= s.expCurrentEnd
       )
 
+      Doctor.showHideDocElements(doctorsToShow)
+
+    nameOrSymptomSearch: (keyword)->
+      keyword = $.trim(keyword.toLowerCase())
+      if $(".doctorsList li:visible").length == 0
+        Doctor.filterDoctorsList()
+      else
+        doctorsToShow = $(".doctorsList li:visible")
+        if $(doctorsToShow).length>0
+          doctorsToShow = $.grep(doctorsToShow, (element, index) ->
+            ($(element).data("symptoms")!= undefined && $(element).data("symptoms").toLowerCase().indexOf(keyword)!=-1) || ($(element).data("name")!= undefined && $(element).data("name").toLowerCase().indexOf(keyword)!=-1)
+          )
+          Doctor.showHideDocElements(doctorsToShow)
+
+    showHideDocElements: (doctorsToShow)->
       $(s.doctorsElements).hide()
       $(doctorsToShow).show()
 
