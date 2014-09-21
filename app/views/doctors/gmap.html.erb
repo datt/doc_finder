@@ -1,0 +1,130 @@
+<!-- <script src='/js/underscore-min.js'></script> -->
+<!-- <div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
+
+<script type="text/javascript">
+ var locations = <%#=raw @locations.to_json %>;
+	handler = Gmaps.build('Google');
+	handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+	  markers = handler.addMarkers(locations);
+	  handler.bounds.extendWith(markers);
+	  handler.fitMapToBounds();
+	});
+</script>
+-->
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+<div id="content">
+	<div id="outputDiv"></div>
+	<div style='width: 800px;'>
+	  <div id="map" style='width: 800px; height: 400px;'></div>
+	</div>
+</div>
+<script type="text/javascript">
+	var map;
+	var geocoder;
+	var bounds = new google.maps.LatLngBounds();
+	var markersArray = [];
+
+	var origin1 = new google.maps.LatLng(18.515604, 73.781905);
+	var destinations = [];
+	<%@locations.each do |location|%>
+		destinations.push(new google.maps.LatLng(<%= location['lat']%>, <%= location['lng']%>));
+	<%end%>
+
+	var destinationIcon = 'https://chart.googleapis.com/chart?chst=d_map_pin_letter&chld=D|FF0000|000000';
+	var originIcon = 'https://chart.googleapis.com/chart?chst=d_map_pin_letter&chld=O|FFFF00|000000';
+
+	function initialize() {
+		calculateDistances();
+		var opts = {
+			center: new google.maps.LatLng(18.512300, 73.779132),
+			zoom: 10,
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+		map = new google.maps.Map(document.getElementById('map'), opts);
+		geocoder = new google.maps.Geocoder();
+	}
+
+	function calculateDistances() {
+		// initialize();
+		var service = new google.maps.DistanceMatrixService();
+		service.getDistanceMatrix(
+		{
+			origins: [origin1],
+			destinations: destinations,
+			travelMode: google.maps.TravelMode.DRIVING,
+			unitSystem: google.maps.UnitSystem.METRIC,
+			avoidHighways: false,
+			avoidTolls: false
+		}, callback);
+	}
+
+	function callback(response, status) {
+		if (status != google.maps.DistanceMatrixStatus.OK) {
+			// alert('Error was: ' + status);
+		} else {
+			var origins = response.originAddresses;
+			var destinations = response.destinationAddresses;
+			var outputDiv = document.getElementById('outputDiv');
+			outputDiv.innerHTML = '';
+			deleteOverlays();
+
+			for (var i = 0; i < origins.length; i++) {
+				var results = response.rows[i].elements;
+				addMarker(origins[i], false);
+				for (var j = 0; j < results.length; j++) {
+					addMarker(destinations[j], true);
+					outputDiv.innerHTML += '<li> Your location to ' + destinations[j]
+					+ ': ' + results[j].distance.text + ' in '
+					+ results[j].duration.text + '</li>';
+				}
+			}
+		}
+	}
+
+	function addMarker(location, isDestination) {
+		var icon;
+		if (isDestination) {
+			icon = destinationIcon;
+		} else {
+			icon = originIcon;
+		}
+		geocoder.geocode({'address': location}, function(results, status) {
+			if (status == google.maps.GeocoderStatus.OK) {
+				bounds.extend(results[0].geometry.location);
+				map.fitBounds(bounds);
+				var marker = new google.maps.Marker({
+					map: map,
+					position: results[0].geometry.location,
+					icon: icon,
+					title: location
+				});
+				map.setCenter(results[0].geometry.location);
+        setInfoWindow(marker, location);
+				markersArray.push(marker);
+			} else {
+				alert('Geocode was not successful for the following reason: '
+					+ status);
+			}
+		});
+	}
+
+	function setInfoWindow(marker, location) {
+		google.maps.event.addListener(marker, 'click', function(event) {
+			var iwindow = new google.maps.InfoWindow();
+			iwindow.setContent(location);
+			iwindow.open(map, this);
+
+		});
+	}
+	function deleteOverlays() {
+		for (var i = 0; i < markersArray.length; i++) {
+			markersArray[i].setMap(null);
+		}
+		markersArray = [];
+	}
+	$(document).ready(function(){
+		google.maps.event.addDomListener(window, 'load', initialize);
+	});
+</script>

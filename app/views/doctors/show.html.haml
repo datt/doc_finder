@@ -10,7 +10,7 @@
       = @doctor.degree
     %div
       Practing since
-      = @doctor.practicing.strftime("%Y")
+      = @doctor.practicing.strftime("%Y") rescue nil
     .expertise
       %strong
         Expertise:
@@ -28,7 +28,7 @@
       = image_tag "/assets/completestar.png"
       = image_tag "/assets/completestar.png"
       = image_tag "/assets/completestar.png"
-    %span 
+    %span
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       5/5
     %span
@@ -39,7 +39,7 @@
         %h4
           community ratings
         %span.basis
-          hygiene 
+          hygiene
         %span
           = image_tag "/assets/completestar.png"
           = image_tag "/assets/completestar.png"
@@ -113,7 +113,7 @@
           = image_tag "/assets/outlinestar.png"
           = image_tag "/assets/outlinestar.png"
           &nbsp;&nbsp;&nbsp;5/5
-        
+
   .clearfix
   .clinics
     %h3
@@ -125,7 +125,7 @@
             .span2
               Name:
             .span3
-              = clinic.name
+              = link_to clinic.name, doctor_clinic_path(@doctor, clinic)
             .span2
               Adress:
             .span3
