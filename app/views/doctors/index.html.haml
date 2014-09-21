@@ -63,7 +63,10 @@
                   #{doctor.expertise}
                   %br
                     practicing since #{doctor.experience.strftime("%Y")}
-                  = link_to 'GetMap', gmap_doctor_path(doctor), :target => '_blank'
+                  - @clinics.select{|c| c.doctor_id==doctor.id}.each do |clinic|
+                    %a.clinic{:href=>"#{gmap_doctor_path(doctor)}", "data-area"=>"#{clinic.zipcode}", :target => '_blank'}
+                      #{clinic.address1.capitalize}
+                  =# link_to 'GetMap', gmap_doctor_path(doctor), :target => '_blank'
           %li.noDoc{style: "display: none"}
             %label We're sorry, No doctor found.
 

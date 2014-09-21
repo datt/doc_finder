@@ -109,7 +109,6 @@ $(document).ready ->
           Doctor.showHideDocElements(doctorsToShow)
 
     searchAreaWise: (area_code)->
-      $()
       doctorsToShow = $("[data-area='#{area_code}']").parents("li:visible")
       Doctor.showHideDocElements(doctorsToShow)
 
